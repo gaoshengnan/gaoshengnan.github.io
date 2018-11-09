@@ -2,9 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/11/09/test999/</loc>
+    
+    <lastmod>2018-11-09T03:33:48.787Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test888/</loc>
+    
+    <lastmod>2018-11-09T03:33:48.784Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test777/</loc>
+    
+    <lastmod>2018-11-09T03:31:04.892Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test666/</loc>
+    
+    <lastmod>2018-11-09T03:30:03.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test444/</loc>
+    
+    <lastmod>2018-11-09T03:30:03.094Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test555/</loc>
+    
+    <lastmod>2018-11-09T03:30:03.094Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test333/</loc>
+    
+    <lastmod>2018-11-09T03:30:03.093Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test222/</loc>
+    
+    <lastmod>2018-11-09T03:30:03.092Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/09/test111/</loc>
+    
+    <lastmod>2018-11-09T03:29:50.750Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/11/09/hahah/</loc>
     
-    <lastmod>2018-11-08T17:19:46.753Z</lastmod>
+    <lastmod>2018-11-09T03:26:04.111Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/07/tags/</loc>
+    
+    <lastmod>2018-11-09T03:09:31.784Z</lastmod>
     
   </url>
   
@@ -40,13 +110,6 @@
     <loc>http://yoursite.com/search/index.html</loc>
     
     <lastmod>2018-11-08T08:14:59.123Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/11/07/tags/</loc>
-    
-    <lastmod>2018-11-07T08:28:41.049Z</lastmod>
     
   </url>
   

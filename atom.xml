@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-08T17:19:46.753Z</updated>
+  <updated>2018-11-09T03:33:48.787Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,155 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>test999</title>
+    <link href="http://yoursite.com/2018/11/09/test999/"/>
+    <id>http://yoursite.com/2018/11/09/test999/</id>
+    <published>2018-11-09T03:31:44.000Z</published>
+    <updated>2018-11-09T03:33:48.787Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test888</title>
+    <link href="http://yoursite.com/2018/11/09/test888/"/>
+    <id>http://yoursite.com/2018/11/09/test888/</id>
+    <published>2018-11-09T03:31:38.000Z</published>
+    <updated>2018-11-09T03:33:48.784Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test777</title>
+    <link href="http://yoursite.com/2018/11/09/test777/"/>
+    <id>http://yoursite.com/2018/11/09/test777/</id>
+    <published>2018-11-09T03:30:50.000Z</published>
+    <updated>2018-11-09T03:31:04.892Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test666</title>
+    <link href="http://yoursite.com/2018/11/09/test666/"/>
+    <id>http://yoursite.com/2018/11/09/test666/</id>
+    <published>2018-11-09T03:28:47.000Z</published>
+    <updated>2018-11-09T03:30:03.095Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test555</title>
+    <link href="http://yoursite.com/2018/11/09/test555/"/>
+    <id>http://yoursite.com/2018/11/09/test555/</id>
+    <published>2018-11-09T03:28:42.000Z</published>
+    <updated>2018-11-09T03:30:03.094Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test444</title>
+    <link href="http://yoursite.com/2018/11/09/test444/"/>
+    <id>http://yoursite.com/2018/11/09/test444/</id>
+    <published>2018-11-09T03:28:37.000Z</published>
+    <updated>2018-11-09T03:30:03.094Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test333</title>
+    <link href="http://yoursite.com/2018/11/09/test333/"/>
+    <id>http://yoursite.com/2018/11/09/test333/</id>
+    <published>2018-11-09T03:28:33.000Z</published>
+    <updated>2018-11-09T03:30:03.093Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test222</title>
+    <link href="http://yoursite.com/2018/11/09/test222/"/>
+    <id>http://yoursite.com/2018/11/09/test222/</id>
+    <published>2018-11-09T03:28:19.000Z</published>
+    <updated>2018-11-09T03:30:03.092Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>测试测试111</title>
     <link href="http://yoursite.com/2018/11/09/hahah/"/>
     <id>http://yoursite.com/2018/11/09/hahah/</id>
-    <published>2018-11-08T17:19:46.753Z</published>
-    <updated>2018-11-08T17:19:46.753Z</updated>
+    <published>2018-11-09T03:17:50.000Z</published>
+    <updated>2018-11-09T03:26:04.111Z</updated>
     
     <content type="html"><![CDATA[<p>cover: <a href="http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg" target="_blank" rel="noopener">http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg</a></p><h1 id="作者信息，多作者则设置为数组"><a href="#作者信息，多作者则设置为数组" class="headerlink" title="作者信息，多作者则设置为数组"></a>作者信息，多作者则设置为数组</h1><h1 id="单作者"><a href="#单作者" class="headerlink" title="单作者"></a>单作者</h1><p>author:<br>  nick: BruceYJ<br>  link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></p><h1 id="多作者"><a href="#多作者" class="headerlink" title="多作者"></a>多作者</h1><p>author:</p><ul><li>nick: BruceYJ<br>link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></li><li>nick: minfive<br>link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></li></ul><h1 id="如果文章为转载文章，需要多加文章出处项"><a href="#如果文章为转载文章，需要多加文章出处项" class="headerlink" title="如果文章为转载文章，需要多加文章出处项"></a>如果文章为转载文章，需要多加文章出处项</h1><p>editor:<br>  name: Minfive<br>  link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></p><h1 id="首页每篇文章的子标题"><a href="#首页每篇文章的子标题" class="headerlink" title="首页每篇文章的子标题"></a>首页每篇文章的子标题</h1><p>subtitle: your subtitle</p>]]></content>
     
@@ -34,6 +178,28 @@
     
     </summary>
     
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test111</title>
+    <link href="http://yoursite.com/2018/11/09/test111/"/>
+    <id>http://yoursite.com/2018/11/09/test111/</id>
+    <published>2018-11-09T03:17:50.000Z</published>
+    <updated>2018-11-09T03:29:50.750Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://yoursite.com/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
@@ -63,9 +229,16 @@
     <link href="http://yoursite.com/2018/11/07/tags/"/>
     <id>http://yoursite.com/2018/11/07/tags/</id>
     <published>2018-11-07T08:28:41.000Z</published>
-    <updated>2018-11-07T08:28:41.049Z</updated>
+    <updated>2018-11-09T03:09:31.784Z</updated>
+    
+    <content type="html"><![CDATA[<p>cover: <a href="http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg" target="_blank" rel="noopener">http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg</a></p><h1 id="作者信息，多作者则设置为数组"><a href="#作者信息，多作者则设置为数组" class="headerlink" title="作者信息，多作者则设置为数组"></a>作者信息，多作者则设置为数组</h1><h1 id="单作者"><a href="#单作者" class="headerlink" title="单作者"></a>单作者</h1><p>author:<br>  nick: BruceYJ<br>  link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></p><h1 id="多作者"><a href="#多作者" class="headerlink" title="多作者"></a>多作者</h1><p>author:</p><ul><li>nick: BruceYJ<br>link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></li><li>nick: minfive<br>link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></li></ul><h1 id="如果文章为转载文章，需要多加文章出处项"><a href="#如果文章为转载文章，需要多加文章出处项" class="headerlink" title="如果文章为转载文章，需要多加文章出处项"></a>如果文章为转载文章，需要多加文章出处项</h1><p>editor:<br>  name: Minfive<br>  link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></p><h1 id="首页每篇文章的子标题"><a href="#首页每篇文章的子标题" class="headerlink" title="首页每篇文章的子标题"></a>首页每篇文章的子标题</h1><p>subtitle: your subtitle</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;cover: &lt;a href=&quot;http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://oxnuwmm3w.bkt.clouddn.com/hello-
+      
     
     </summary>
     
