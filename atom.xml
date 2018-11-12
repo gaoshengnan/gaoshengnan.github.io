@@ -187,27 +187,28 @@
   </entry>
   
   <entry>
-    <title>测试测试111</title>
+    <title>ElasticSearch-关于映射类型的那些事</title>
     <link href="http://seina.top/2018/11/09/hahah/"/>
     <id>http://seina.top/2018/11/09/hahah/</id>
     <published>2018-11-09T03:17:50.000Z</published>
-    <updated>2018-11-09T05:38:11.221Z</updated>
+    <updated>2018-11-12T02:53:10.133Z</updated>
     
-    <content type="html"><![CDATA[<p>cover: <a href="http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg" target="_blank" rel="noopener">http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg</a></p><h1 id="作者信息，多作者则设置为数组"><a href="#作者信息，多作者则设置为数组" class="headerlink" title="作者信息，多作者则设置为数组"></a>作者信息，多作者则设置为数组</h1><h1 id="单作者"><a href="#单作者" class="headerlink" title="单作者"></a>单作者</h1><p>author:<br>  nick: BruceYJ<br>  link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></p><h1 id="多作者"><a href="#多作者" class="headerlink" title="多作者"></a>多作者</h1><p>author:</p><ul><li>nick: BruceYJ<br>link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></li><li>nick: minfive<br>link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></li></ul><h1 id="如果文章为转载文章，需要多加文章出处项"><a href="#如果文章为转载文章，需要多加文章出处项" class="headerlink" title="如果文章为转载文章，需要多加文章出处项"></a>如果文章为转载文章，需要多加文章出处项</h1><p>editor:<br>  name: Minfive<br>  link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></p><h1 id="首页每篇文章的子标题"><a href="#首页每篇文章的子标题" class="headerlink" title="首页每篇文章的子标题"></a>首页每篇文章的子标题</h1><p>subtitle: your subtitle</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="删除映射类型"><a href="#删除映射类型" class="headerlink" title="删除映射类型"></a>删除映射类型</h3><blockquote><p>在Elasticsearch 6.0.0 或者更高版本中创建的索引可能只包含单个映射类型，在5.x中创建的索引具有多种映射类型，这个功能将继续在6.x之前运行，映射类型将在7.0.0中完全删除。<br>（5.x-6.x:多种映射类型，6.x之后单个映射类型，7.0.0中映射类型完全消失）</p></blockquote><h3 id="什么是映射类型"><a href="#什么是映射类型" class="headerlink" title="什么是映射类型?"></a>什么是映射类型?</h3><p>自从Elasticsearch首个稳定版本发布以来，每个文档存储在单个索引里，并且分配映射类型，映射类型用来表示要编制索引的文档或者实体的类型，例如twitter索引可能具有user类型和tweet类型。</p><p>每个映射类型都有自己的字段，user类型也许有full_name字段，user_name字段，email字段，当然tweet也有content字段，tweeted_at字段和像user类型一样的user_name字段。</p><p>每个文档有一个_type元字段包含类型的名字，并且通过在URL指定类型名称s，可以将搜索限制为一种或多种类型：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET twitter/user,tweet/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match"</span>: &#123;</span><br><span class="line">      <span class="string">"user_name"</span>: <span class="string">"kimchy"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个_type字段和文档的_id结合字段生成_uid字段，所以有相同_id字段的不同类型的文档可以存在同一个索引里。</p><p>映射类型也用在建立文档之间的亲子关系，就是question类型的文档可能和answer文档有亲子系。</p><h3 id="为什么映射类型会被删除？"><a href="#为什么映射类型会被删除？" class="headerlink" title="为什么映射类型会被删除？"></a>为什么映射类型会被删除？</h3><p>最初，我们谈到的索引类似SQL数据库中的数据库，类型相当于表。</p><p>这是一个很糟糕的比喻，导致了错误的假设，在SQL数据库里，表是彼此相互独立的，这个表中的列和另一个表中同样名字的列没有关系，映射类型中的字段不是这种情况。</p><p>在ElasticSearch索引中，在不同映射类型中有相同名字的字段在内部由相同的Lucene字段支持，换而言之，使用上面的例子，user类型中user_name字段被存储在与tweet类型的user_name字段名字相同的字段中，并且这两个不同类型的user_name字段必须有完全相同的映射。</p><p>当你想要删除一个类型的date字段和同一个索引中另一个类型的另一个boolean字段时，这可能会很令人绝望。</p><p>更重要的是，存储在同一个索引中具有很少或者没有共同字段的不同实体会导致稀疏数据并干扰Lucene有效压缩文档的能力。</p><p>综合这些原因，我们决定从ElasticSearch中删除映射类型的概念。</p><h3 id="映射类型的替代方法"><a href="#映射类型的替代方法" class="headerlink" title="映射类型的替代方法"></a>映射类型的替代方法</h3><h5 id="Index-per-document-type"><a href="#Index-per-document-type" class="headerlink" title="Index per document type"></a>Index per document type</h5><p>第一个替代方法是每个索引对应一个文档类型，不像原来将tweet和user存储在一个twitter索引中，你可以在tweets索引中存储tweets类型和在user索引中存储user类型，索引完全彼此相互独立，因此索引之间不会有字段冲突（比如上文描述的同一索引中不同类型的user_name）<br>这个方法有两个好处:</p><ol><li>数据更可能是密集的，并且有益于Lucene中使用压缩技术</li><li>用于全文搜索评分更可能是准确的，因为同一索引中的所有文档都代表单个实体。</li></ol><p>每个索引都可以适应文档的数量进行大小调整：您可以为user索引使用较少数量的主分片，为tweets索引使用较大的主分片。</p><h5 id="自定义类型字段"><a href="#自定义类型字段" class="headerlink" title="自定义类型字段"></a>自定义类型字段</h5><p>当然，集群中可以存在多少个主分片是有限制的，也许你并想要浪费整个主分片来存储几千个文档的集合，这种情况下，你可以实现你自己自定义的类型，工作方式和原来的_type一样。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;cover: &lt;a href=&quot;http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://oxnuwmm3w.bkt.clouddn.com/hello-
+        &lt;h3 id=&quot;删除映射类型&quot;&gt;&lt;a href=&quot;#删除映射类型&quot; class=&quot;headerlink&quot; title=&quot;删除映射类型&quot;&gt;&lt;/a&gt;删除映射类型&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在Elasticsearch 6.0.0 或者更高版本中创建的索引可能只包含单个映
       
     
     </summary>
     
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+      <category term="ElasticSearch6.4官方文档翻译" scheme="http://seina.top/categories/ElasticSearch6-4%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/"/>
     
     
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="ElasticSearch" scheme="http://seina.top/tags/ElasticSearch/"/>
     
   </entry>
   
