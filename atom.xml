@@ -123,60 +123,6 @@
   </entry>
   
   <entry>
-    <title>test333</title>
-    <link href="http://seina.top/2018/11/09/test333/"/>
-    <id>http://seina.top/2018/11/09/test333/</id>
-    <published>2018-11-09T03:28:33.000Z</published>
-    <updated>2018-11-09T03:30:03.093Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test222</title>
-    <link href="http://seina.top/2018/11/09/test222/"/>
-    <id>http://seina.top/2018/11/09/test222/</id>
-    <published>2018-11-09T03:28:19.000Z</published>
-    <updated>2018-11-09T03:30:03.092Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test111</title>
-    <link href="http://seina.top/2018/11/09/test111/"/>
-    <id>http://seina.top/2018/11/09/test111/</id>
-    <published>2018-11-09T03:17:50.000Z</published>
-    <updated>2018-11-09T03:29:50.750Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://seina.top/2018/11/09/hello-world/"/>
     <id>http://seina.top/2018/11/09/hello-world/</id>
@@ -198,34 +144,20 @@
   </entry>
   
   <entry>
-    <title>tags</title>
-    <link href="http://seina.top/2018/11/07/tags/"/>
-    <id>http://seina.top/2018/11/07/tags/</id>
-    <published>2018-11-07T08:28:41.000Z</published>
-    <updated>2018-11-09T03:09:31.784Z</updated>
-    
-    <content type="html"><![CDATA[<p>cover: <a href="http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg" target="_blank" rel="noopener">http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg</a></p><h1 id="作者信息，多作者则设置为数组"><a href="#作者信息，多作者则设置为数组" class="headerlink" title="作者信息，多作者则设置为数组"></a>作者信息，多作者则设置为数组</h1><h1 id="单作者"><a href="#单作者" class="headerlink" title="单作者"></a>单作者</h1><p>author:<br>  nick: BruceYJ<br>  link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></p><h1 id="多作者"><a href="#多作者" class="headerlink" title="多作者"></a>多作者</h1><p>author:</p><ul><li>nick: BruceYJ<br>link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></li><li>nick: minfive<br>link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></li></ul><h1 id="如果文章为转载文章，需要多加文章出处项"><a href="#如果文章为转载文章，需要多加文章出处项" class="headerlink" title="如果文章为转载文章，需要多加文章出处项"></a>如果文章为转载文章，需要多加文章出处项</h1><p>editor:<br>  name: Minfive<br>  link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></p><h1 id="首页每篇文章的子标题"><a href="#首页每篇文章的子标题" class="headerlink" title="首页每篇文章的子标题"></a>首页每篇文章的子标题</h1><p>subtitle: your subtitle</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;cover: &lt;a href=&quot;http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://oxnuwmm3w.bkt.clouddn.com/hello-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>常见设计原则-单一职责原则</title>
     <link href="http://seina.top/2018/11/05/singleResponsibility/"/>
     <id>http://seina.top/2018/11/05/singleResponsibility/</id>
     <published>2018-11-05T03:30:50.000Z</published>
-    <updated>2018-11-14T03:59:16.667Z</updated>
+    <updated>2018-11-14T08:45:57.452Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="小例子带你进入场景"><a href="#小例子带你进入场景" class="headerlink" title="小例子带你进入场景"></a>小例子带你进入场景</h3><p>例如我们日常生活中的手机，里面有摄像机、照片机、打电话、听音乐等多个功能，虽然手机小巧携带方便，但是显而易见，我们都知道手机的摄像功能没有摄像机拍摄的好，拍照功能没有照相机拍的好看。当然手机也只是过渡展品，如果摄像机，照相机像一张卡片那么大，又不失原有强大的拍照摄像功能，可能大家都不会用手机拍照了～</p><p>我们在编程的时候，自然而然的会给一个类增加各种各样的功能，比如我们写一个窗体应用程序，一般都会生成一个Forml这样的类，于是我们就会把各种各样的代码，像某种商业运算的算法呀，像数据库访问的SQL语句呀什么的都写到这样的类中，这就意味着，无论任何时候需求进来，你都需要更改这个窗体类，这其实是很糟糕的，维护麻烦，复用不可能，也缺乏灵活性。</p><p>再比如说我之前在高复用返回结果类ResultVO中加入JsonView时，这样一个类就具有了两个功能，后来我们老大说要把ResultVO统一拎出来管理，我那个服务的ResultVO打死也拎不动。。这就很尴尬了，可能当时一个类负责返回结果VO，另一个类负责JsonView展示，可能就会好很多。</p><h3 id="用最正确的姿势理解最简单的单一职责原则"><a href="#用最正确的姿势理解最简单的单一职责原则" class="headerlink" title="用最正确的姿势理解最简单的单一职责原则"></a>用最正确的姿势理解最简单的单一职责原则</h3><blockquote><p>单一职责原则：就一个类而言，应该仅有一个引起它变化的原因</p></blockquote><p>如果一个类承担的职责过多，就等于把这些职责耦合在一起，一个职责的变化可能会削弱或者抑制这个类完成其他职责的能力。这种耦合会导致脆弱的设计，当变化发生时，设计会遭到意想不到的破坏。</p><p>软件设计真正要做的许多内容，就是发现职责并把那些职责相互分离。其实要去判断是否应该分离出来也不是特别难，那就是如果你能够想到多于一个的动机去改变一个类，那么这个类就具有多于一个的职责，就应该考虑类的职责分离。</p><blockquote><p>总结来说，在编程时，我们确实要在类的职责分离上多思考，做到单一职责，这样你的代码才是真正的易维护，易扩展，易复用，灵活多样。</p></blockquote>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;小例子带你进入场景&quot;&gt;&lt;a href=&quot;#小例子带你进入场景&quot; class=&quot;headerlink&quot; title=&quot;小例子带你进入场景&quot;&gt;&lt;/a&gt;小例子带你进入场景&lt;/h3&gt;&lt;p&gt;例如我们日常生活中的手机，里面有摄像机、照片机、打电话、听音乐等多个功能，虽然手机小
+      
     
     </summary>
     
@@ -285,6 +217,81 @@
     
     
       <category term="设计原则" scheme="http://seina.top/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test333</title>
+    <link href="http://seina.top/2017/11/09/test333/"/>
+    <id>http://seina.top/2017/11/09/test333/</id>
+    <published>2017-11-09T03:28:33.000Z</published>
+    <updated>2018-11-14T08:48:05.830Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test222</title>
+    <link href="http://seina.top/2017/11/09/test222/"/>
+    <id>http://seina.top/2017/11/09/test222/</id>
+    <published>2017-11-09T03:28:19.000Z</published>
+    <updated>2018-11-14T08:48:05.827Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test111</title>
+    <link href="http://seina.top/2017/11/09/test111/"/>
+    <id>http://seina.top/2017/11/09/test111/</id>
+    <published>2017-11-09T03:17:50.000Z</published>
+    <updated>2018-11-14T08:48:05.835Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tags</title>
+    <link href="http://seina.top/2017/11/07/tags/"/>
+    <id>http://seina.top/2017/11/07/tags/</id>
+    <published>2017-11-07T08:28:41.000Z</published>
+    <updated>2018-11-14T08:48:05.817Z</updated>
+    
+    <content type="html"><![CDATA[<p>cover: <a href="http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg" target="_blank" rel="noopener">http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg</a></p><h1 id="作者信息，多作者则设置为数组"><a href="#作者信息，多作者则设置为数组" class="headerlink" title="作者信息，多作者则设置为数组"></a>作者信息，多作者则设置为数组</h1><h1 id="单作者"><a href="#单作者" class="headerlink" title="单作者"></a>单作者</h1><p>author:<br>  nick: BruceYJ<br>  link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></p><h1 id="多作者"><a href="#多作者" class="headerlink" title="多作者"></a>多作者</h1><p>author:</p><ul><li>nick: BruceYJ<br>link: <a href="https://www.github.com/BruceYuj" target="_blank" rel="noopener">https://www.github.com/BruceYuj</a></li><li>nick: minfive<br>link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></li></ul><h1 id="如果文章为转载文章，需要多加文章出处项"><a href="#如果文章为转载文章，需要多加文章出处项" class="headerlink" title="如果文章为转载文章，需要多加文章出处项"></a>如果文章为转载文章，需要多加文章出处项</h1><p>editor:<br>  name: Minfive<br>  link: <a href="https://www.github.com/Mrminfive" target="_blank" rel="noopener">https://www.github.com/Mrminfive</a></p><h1 id="首页每篇文章的子标题"><a href="#首页每篇文章的子标题" class="headerlink" title="首页每篇文章的子标题"></a>首页每篇文章的子标题</h1><p>subtitle: your subtitle</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cover: &lt;a href=&quot;http://oxnuwmm3w.bkt.clouddn.com/hello-world.jpeg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://oxnuwmm3w.bkt.clouddn.com/hello-
+      
+    
+    </summary>
+    
     
   </entry>
   
