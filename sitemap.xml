@@ -2,16 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://seina.top/2018/11/09/designPrinciples/</loc>
+    <loc>http://seina.top/2018/11/04/dependencyInversion/</loc>
     
-    <lastmod>2018-11-12T09:11:17.583Z</lastmod>
+    <lastmod>2018-11-14T07:04:24.734Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://seina.top/2018/11/09/test999/</loc>
+    <loc>http://seina.top/2018/11/09/compositeReuse/</loc>
     
-    <lastmod>2018-11-12T03:15:01.441Z</lastmod>
+    <lastmod>2018-11-14T04:09:41.635Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://seina.top/2018/11/09/ridleyReplace/</loc>
+    
+    <lastmod>2018-11-14T04:09:41.631Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://seina.top/2018/11/09/dimetRule/</loc>
+    
+    <lastmod>2018-11-14T04:09:41.626Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://seina.top/2018/11/05/singleResponsibility/</loc>
+    
+    <lastmod>2018-11-14T03:59:16.667Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://seina.top/2018/11/03/openClose/</loc>
+    
+    <lastmod>2018-11-14T03:56:36.740Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://seina.top/2018/11/11/microservice/</loc>
+    
+    <lastmod>2018-11-14T03:26:11.278Z</lastmod>
     
   </url>
   
@@ -30,42 +65,7 @@
   </url>
   
   <url>
-    <loc>http://seina.top/2018/11/11/microservice/</loc>
-    
-    <lastmod>2018-11-12T02:26:00.591Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://seina.top/2018/11/09/test777/</loc>
-    
-    <lastmod>2018-11-09T03:31:04.892Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://seina.top/2018/11/09/test555/</loc>
-    
-    <lastmod>2018-11-09T03:30:03.094Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://seina.top/2018/11/09/test666/</loc>
-    
-    <lastmod>2018-11-09T03:30:03.094Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://seina.top/2018/11/09/test333/</loc>
-    
-    <lastmod>2018-11-09T03:30:03.093Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://seina.top/2018/11/09/test444/</loc>
     
     <lastmod>2018-11-09T03:30:03.093Z</lastmod>
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://seina.top/"/>
-  <updated>2018-11-12T02:26:00.591Z</updated>
+  <updated>2018-11-14T03:26:11.278Z</updated>
   <id>http://seina.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://seina.top/2018/11/11/microservice/"/>
     <id>http://seina.top/2018/11/11/microservice/</id>
     <published>2018-11-11T14:48:37.000Z</published>
-    <updated>2018-11-12T02:26:00.591Z</updated>
+    <updated>2018-11-14T03:26:11.278Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="维基百科定义微服务"><a href="#维基百科定义微服务" class="headerlink" title="维基百科定义微服务"></a>维基百科定义微服务</h3><blockquote><p>维基百科定义微服务：微服务的概念最早实在2014年由MArtin Fowler和James Lewis共同提出，他们定义了微服务是由单一应用程序构成的小服务，拥有自己的进程和轻量化处理，服务依业务功能设计，以全自动的方式部署，与其他服务使用HTTP API通讯。同时。服务会使用最小规模的集中管理（如Docker）技术，服务可以用不同的编程语言和数据库等。</p></blockquote><p>好吧，可能看完了上面一段话反而觉得更难理解了，老外说的话一向都是这么生涩难懂，其实在我看来，要想深刻理解微服务的价值，需要先感受一下单体应用的痛苦！</p><h3 id="单体应用架构的不足"><a href="#单体应用架构的不足" class="headerlink" title="单体应用架构的不足"></a>单体应用架构的不足</h3><p>以MVC架构为例，业务通常通过部署一个WAR包到Tomcat中，然后启动Tomcat，监听某个端口号即可对外提供服务。早期在业务规模不大，开发团队人员规模较小的时候，采用单体应用架构，团队的开发和运维成本都可控，虽然偶尔也会解决一下冲突-.-。然而随着业务规模越来越大，代码越来越多，依赖的资源也很多，应用编译打包、部署测试一次，甚至需要10分钟以上，部署效率低下。</p><p>团队开发人员不断的扩张，彼此协作开发成本高，比如超过是个人协作修改代码，最后合并到master分支，一起打包部署，这样到了测试阶段只要有一块功能有问题，就得重新编译打包部署，然后重新预览测试，所有开发人员参与其中，效率超低。。</p><p>系统的高可用性差，一旦某个功能涉及的代码或者资源有问题，就会影响系统的可用性。比如某段代码不停的创建大对象，并且没有回收，运行一段时间后导致JVM内存泄漏，异常退出，那么部署在同一个JVM进程中的所有服务都不可用，后果很严重。。</p><h3 id="我理解的微服务"><a href="#我理解的微服务" class="headerlink" title="我理解的微服务"></a>我理解的微服务</h3><p>为了解决以上问题，服务化的思想诞生了。通俗来讲，服务化就是把传统的单体应用中通过JAR包依赖产生的本地方法调用，改造成RPC接口产生的远程方法调用。</p><p>我过去的项目经历里，比如项目包含用户模块，权限模块，应用模块等，其中权限模块需要调用用户模块取用户信息，应用模块也需要，所以把用户模块拆分出来，独立成一个服务部署，以RPC接口的形式对外提供服务，这样当权限模块调用用户服务的时候从进程内的调用变成远程RPC调用，这样，用户服务就可以独立开发部署测试上线和运维，可以交由专门的团队来做。</p><blockquote><p>什么时候进行服务化拆分：项目第一个阶段主要目标是快速开发和验证想法，证明产品思路是可行。这个阶段的功能设计一般不会太复杂，开发采取快速迭代的方式，架构设计也不适合过度。所有功能打包部署在一起开发测试运维，是最高效也是最节约成本的方式。当可行性验证通过，功能进一步迭代，就可以加入越来越多的新特性。</p></blockquote><blockquote><p>服务化拆分的两个姿势: </p><ol><li>纵向拆分，是从业务维度进行拆分，关联比较密切的拆分成一个微服务，而功能相对独立的业务员适合拆分成一个微服务</li><li>横向拆分，将公共且独立的功能模块拆分成一个微服务，即公共的被多个其他服务调用，且依赖的资源不与其他业务耦合</li></ol></blockquote><blockquote><p>小总结：服务化拆分粒度更细，服务独立部署，独立维护，服务治理要求能力高一些。拆分成微服务之后服务的数量变多，需要统一的服务治理平台，来对各个服务进行管理</p></blockquote><p>可见通过服务化，可以解决单体应用膨胀、团队开发耦合度高、协作效率低下的问题。在我看来，微服务发展到现在，已经不再单单局限于微服务架构本身，还与容器化、DevOps 等新的理念相结合，成为当前移动互联网时代最先进的业务架构解决方案，能更好地迎合移动互联网业务快速迭代的要求。</p><h3 id="服务化拆分必须要面临的问题"><a href="#服务化拆分必须要面临的问题" class="headerlink" title="服务化拆分必须要面临的问题"></a>服务化拆分必须要面临的问题</h3><ol><li><p>服务如何定义：对于微服务来说，每个服务都运行在各自的进程中，应该以接口的形式向外界传达自己的信息，无论采用哪种通讯协议，是HTTP还是RPC，服务之间的调用都通过接口描述来约定，约定包括接口名，接口参数以及接口的返回值</p></li><li><p>服务如何发布和订阅：服务调用者如何获取到需要调用服务的地址，这就需要一个注册中心</p></li><li><p>服务如何监控：通常对于一个服务，我们最关心的是 QPS（调用量）、AvgTime（平均耗时）以及 P999（99.9% 的请求性能在多少毫秒以内）这些指标。这时候你就需要一种通用的监控方案，能够覆盖业务埋点、数据收集、数据处理，最后到数据展示的全链路功能。</p></li><li><p>服务如何治理：可以想象，拆分为微服务架构后，服务的数量变多了，依赖关系也变复杂了。比如一个服务的性能有问题时，依赖的服务都势必会受到影响。可以设定一个调用性能阈值，如果一段时间内一直超过这个值，那么依赖服务的调用可以直接返回，这就是熔断，也是服务治理最常用的手段之一。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h3 id="维基百科定义微服务"><a href="#维基百科定义微服务" class="headerlink" title="维基百科定义微服务"></a>维基百科定义微服务</h3><blockquote><p>维基百科定义微服务：微服务的概念最早实在2014年由MArtin Fowler和James Lewis共同提出，他们定义了微服务是由单一应用程序构成的小服务，拥有自己的进程和轻量化处理，服务依业务功能设计，以全自动的方式部署，与其他服务使用HTTP API通讯。同时。服务会使用最小规模的集中管理（如Docker）技术，服务可以用不同的编程语言和数据库等。</p></blockquote><p>好吧，可能看完了上面一段话反而觉得更难理解了，老外说的话一向都是这么生涩难懂，其实在我看来，要想深刻理解微服务的价值，需要先感受一下单体应用的痛苦！</p><h3 id="单体应用架构的不足"><a href="#单体应用架构的不足" class="headerlink" title="单体应用架构的不足"></a>单体应用架构的不足</h3><p>以MVC架构为例，业务通常通过部署一个WAR包到Tomcat中，然后启动Tomcat，监听某个端口号即可对外提供服务。早期在业务规模不大，开发团队人员规模较小的时候，采用单体应用架构，团队的开发和运维成本都可控，虽然偶尔也会解决一下冲突-.-。然而随着业务规模越来越大，代码越来越多，依赖的资源也很多，应用编译打包、部署测试一次，甚至需要10分钟以上，部署效率低下。</p><p>团队开发人员不断的扩张，彼此协作开发成本高，比如超过十个人协作修改代码，最后合并到master分支，一起打包部署，这样到了测试阶段只要有一块功能有问题，就得重新编译打包部署，然后重新预览测试，所有开发人员参与其中，效率超低。。</p><p>系统的高可用性差，一旦某个功能涉及的代码或者资源有问题，就会影响系统的可用性。比如某段代码不停的创建大对象，并且没有回收，运行一段时间后导致JVM内存泄漏，异常退出，那么部署在同一个JVM进程中的所有服务都不可用，后果很严重。。</p><h3 id="我理解的微服务"><a href="#我理解的微服务" class="headerlink" title="我理解的微服务"></a>我理解的微服务</h3><p>为了解决以上问题，服务化的思想诞生了。通俗来讲，服务化就是把传统的单体应用中通过JAR包依赖产生的本地方法调用，改造成RPC接口产生的远程方法调用。</p><p>我过去的项目经历里，比如项目包含用户模块，权限模块，应用模块等，其中权限模块需要调用用户模块取用户信息，应用模块也需要，所以把用户模块拆分出来，独立成一个服务部署，以RPC接口的形式对外提供服务，这样当权限模块调用用户服务的时候从进程内的调用变成远程RPC调用，这样，用户服务就可以独立开发部署测试上线和运维，可以交由专门的团队来做。</p><blockquote><p>什么时候进行服务化拆分：项目第一个阶段主要目标是快速开发和验证想法，证明产品思路是可行。这个阶段的功能设计一般不会太复杂，开发采取快速迭代的方式，架构设计也不适合过度。所有功能打包部署在一起开发测试运维，是最高效也是最节约成本的方式。当可行性验证通过，功能进一步迭代，就可以加入越来越多的新特性。</p></blockquote><blockquote><p>服务化拆分的两个姿势: </p><ol><li>纵向拆分，是从业务维度进行拆分，关联比较密切的拆分成一个微服务，而功能相对独立的业务员适合拆分成一个微服务</li><li>横向拆分，将公共且独立的功能模块拆分成一个微服务，即公共的被多个其他服务调用，且依赖的资源不与其他业务耦合</li></ol></blockquote><blockquote><p>小总结：服务化拆分粒度更细，服务独立部署，独立维护，服务治理要求能力高一些。拆分成微服务之后服务的数量变多，需要统一的服务治理平台，来对各个服务进行管理</p></blockquote><p>可见通过服务化，可以解决单体应用膨胀、团队开发耦合度高、协作效率低下的问题。在我看来，微服务发展到现在，已经不再单单局限于微服务架构本身，还与容器化、DevOps 等新的理念相结合，成为当前移动互联网时代最先进的业务架构解决方案，能更好地迎合移动互联网业务快速迭代的要求。</p><h3 id="服务化拆分必须要面临的问题"><a href="#服务化拆分必须要面临的问题" class="headerlink" title="服务化拆分必须要面临的问题"></a>服务化拆分必须要面临的问题</h3><ol><li><p>服务如何定义：对于微服务来说，每个服务都运行在各自的进程中，应该以接口的形式向外界传达自己的信息，无论采用哪种通讯协议，是HTTP还是RPC，服务之间的调用都通过接口描述来约定，约定包括接口名，接口参数以及接口的返回值</p></li><li><p>服务如何发布和订阅：服务调用者如何获取到需要调用服务的地址，这就需要一个注册中心</p></li><li><p>服务如何监控：通常对于一个服务，我们最关心的是 QPS（调用量）、AvgTime（平均耗时）以及 P999（99.9% 的请求性能在多少毫秒以内）这些指标。这时候你就需要一种通用的监控方案，能够覆盖业务埋点、数据收集、数据处理，最后到数据展示的全链路功能。</p></li><li><p>服务如何治理：可以想象，拆分为微服务架构后，服务的数量变多了，依赖关系也变复杂了。比如一个服务的性能有问题时，依赖的服务都势必会受到影响。可以设定一个调用性能阈值，如果一段时间内一直超过这个值，那么依赖服务的调用可以直接返回，这就是熔断，也是服务治理最常用的手段之一。</p></li></ol>]]></content>
     
     <summary type="html">
     
@@ -69,20 +69,13 @@
   </entry>
   
   <entry>
-    <title>常见设计原则</title>
-    <link href="http://seina.top/2018/11/09/designPrinciples/"/>
-    <id>http://seina.top/2018/11/09/designPrinciples/</id>
-    <published>2018-11-09T03:31:38.000Z</published>
-    <updated>2018-11-12T09:11:17.583Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><p>定义：一个软件实体如类、模块和函数应该对扩展开放，对修改关闭，即可以扩展，不可以修改。用抽象构建框架，用实现扩展细节。<br>优点：提高软件系统的可复用性及可维护性<br>经典例子：一国两制，弹性8小时打卡</p><blockquote><p>实现开闭原则的核心思想是面向抽象编程，而不是面向具体的实现编程</p></blockquote><p>我们在做任何系统的时候，都不要指定系统一开始的时候需求确定，就再也不会变化，这是不现实也不科学的想法，那么既然需求一定会变化，我们就应该重点关注怎么设计才能面对需求的改变却可以保持相对稳定。</p><p>因为抽象相对而言是稳定的，让类依赖于固定的抽象，所以对于修改来说是封闭的，而通过面向对象的继承以及多态体的机制，就可以实现对抽象体的继承，通过重写改变其固有的方法，或者实现新的扩展方法，所以对扩展是开放对。</p><p>如果接口里面有很多方法，实现类里面逻辑又很复杂，一旦改变了，风险很大，所以接口不应该经常变化，应该是稳定的，否则接口作为契约这个功能就失去了。</p><p>越底层模块的变化影响的范围越大，越高层模块的变化影响的范围越小，简单理解，如果dao层被很多Service实现，如果改dao层，可能影响到其他模块的service，controller等。</p><p>无论模块是多么封闭，都会存在一些无法对之封闭的变化。在我们最开始写代码的时候假设不会发生变化。当发生变化的时候，我们就立即采取行动，创建抽象来隔离以后发生的类似的变化。</p><p>除此之外，面对需求，我们对代码的改动是通过增加新代码进行的，而不是改动现有的代码。</p><p><img src="../../themes/hexo-theme-skapp/source/img/openClose.png" alt="UML"></p>]]></content>
+    <title>常见设计原则-迪米特法则</title>
+    <link href="http://seina.top/2018/11/09/dimetRule/"/>
+    <id>http://seina.top/2018/11/09/dimetRule/</id>
+    <published>2018-11-09T03:28:47.000Z</published>
+    <updated>2018-11-14T04:09:41.626Z</updated>
     
     <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;开闭原则&quot;&gt;&lt;a href=&quot;#开闭原则&quot; class=&quot;headerlink&quot; title=&quot;开闭原则&quot;&gt;&lt;/a&gt;开闭原则&lt;/h3&gt;&lt;p&gt;定义：一个软件实体如类、模块和函数应该对扩展开放，对修改关闭，即可以扩展，不可以修改。用抽象构建框架，用实现扩展细节。&lt;br
-      
     
     </summary>
     
@@ -94,74 +87,38 @@
   </entry>
   
   <entry>
-    <title>test777</title>
-    <link href="http://seina.top/2018/11/09/test777/"/>
-    <id>http://seina.top/2018/11/09/test777/</id>
-    <published>2018-11-09T03:30:50.000Z</published>
-    <updated>2018-11-09T03:31:04.892Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test666</title>
-    <link href="http://seina.top/2018/11/09/test666/"/>
-    <id>http://seina.top/2018/11/09/test666/</id>
-    <published>2018-11-09T03:28:47.000Z</published>
-    <updated>2018-11-09T03:30:03.094Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test555</title>
-    <link href="http://seina.top/2018/11/09/test555/"/>
-    <id>http://seina.top/2018/11/09/test555/</id>
+    <title>常见设计原则-里氏替换原则</title>
+    <link href="http://seina.top/2018/11/09/ridleyReplace/"/>
+    <id>http://seina.top/2018/11/09/ridleyReplace/</id>
     <published>2018-11-09T03:28:42.000Z</published>
-    <updated>2018-11-09T03:30:03.094Z</updated>
+    <updated>2018-11-14T04:09:41.631Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+      <category term="大战设计模式" scheme="http://seina.top/categories/%E5%A4%A7%E6%88%98%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="设计原则" scheme="http://seina.top/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
     
   </entry>
   
   <entry>
-    <title>test444</title>
-    <link href="http://seina.top/2018/11/09/test444/"/>
-    <id>http://seina.top/2018/11/09/test444/</id>
+    <title>常见设计原则-组合复用原则</title>
+    <link href="http://seina.top/2018/11/09/compositeReuse/"/>
+    <id>http://seina.top/2018/11/09/compositeReuse/</id>
     <published>2018-11-09T03:28:37.000Z</published>
-    <updated>2018-11-09T03:30:03.093Z</updated>
+    <updated>2018-11-14T04:09:41.635Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="初始化测试文章" scheme="http://seina.top/categories/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+      <category term="大战设计模式" scheme="http://seina.top/categories/%E5%A4%A7%E6%88%98%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="设计原则" scheme="http://seina.top/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
     
   </entry>
   
@@ -198,20 +155,6 @@
     
     
       <category term="测试" scheme="http://seina.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test999</title>
-    <link href="http://seina.top/2018/11/09/test999/"/>
-    <id>http://seina.top/2018/11/09/test999/</id>
-    <published>2018-11-09T03:22:44.000Z</published>
-    <updated>2018-11-12T03:15:01.441Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
@@ -272,6 +215,76 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>常见设计原则-单一职责原则</title>
+    <link href="http://seina.top/2018/11/05/singleResponsibility/"/>
+    <id>http://seina.top/2018/11/05/singleResponsibility/</id>
+    <published>2018-11-05T03:30:50.000Z</published>
+    <updated>2018-11-14T03:59:16.667Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="大战设计模式" scheme="http://seina.top/categories/%E5%A4%A7%E6%88%98%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计原则" scheme="http://seina.top/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见设计原则-依赖倒置原则</title>
+    <link href="http://seina.top/2018/11/04/dependencyInversion/"/>
+    <id>http://seina.top/2018/11/04/dependencyInversion/</id>
+    <published>2018-11-04T03:22:44.000Z</published>
+    <updated>2018-11-14T07:04:24.734Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="加深依赖倒置原则定义的理解"><a href="#加深依赖倒置原则定义的理解" class="headerlink" title="加深依赖倒置原则定义的理解"></a>加深依赖倒置原则定义的理解</h3><blockquote><p>依赖倒置原则<br>A. 高层模块不应该依赖底层模块，两者都应该依赖其抽象<br>B. 抽象不应该依赖其细节，细节应该依赖抽象</p></blockquote><p>首先这不是小白级别的博客，只是我用来记录自己有关依赖倒置原则的理解，如果你一点都不了解依赖倒置原则，那么推荐一本大话设计模式～</p><p>好多人看完了依赖倒置原则都不理解，所谓的”倒置”，到底是在哪里，面向过程开发时，为了使得常用代码可以复用，一般都会把这些常用代码写成许许多多函数的程序库，这样我们在做新项目时，去调用这些底层的函数就可以的。比如我们做的项目大多数要访问数据库，所以我们就把访问数据库的代码写成了函数，每次做新项目的时候都要去调用这些函数，这就叫高层模块依赖底层模块。</p><p>这其实看起来并没有什么问题，业务逻辑的高层模块都是一样的，但客户希望使用不同的数据库或者存储信息方式，这时就麻烦了，我们希望再次利用这些高层模块，但是高层模块都是和底层模块绑在一起，没办法复用这些高层模块。例如PC电脑里如果CPU、内存、硬盘都需要依赖具体的主板，主板一坏，其他的部件就都没用了，反过来，如果内存坏了，也不应该造成其他部件不可用。</p><p>如果高层模块或者底层模块，它们都依赖于抽象，具体一点就是接口或者抽象类，只要接口是稳定的，那么任何一个改动都不用担心其他收到影响。</p><h3 id="通过coding进一步加深理解"><a href="#通过coding进一步加深理解" class="headerlink" title="通过coding进一步加深理解"></a>通过coding进一步加深理解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">课程接口</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICourse</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">studyCourse</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaCourse</span> <span class="keyword">implements</span> <span class="title">ICourse</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">studyCourse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Geely在学习Java课程"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Geely</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ICourse iCourse;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setiCourse</span><span class="params">(ICourse iCourse)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.iCourse = iCourse;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//给Geely一个学习课程的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">studyImoocCourse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        iCourse.studyCourse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span>  <span class="title">Test</span> </span>&#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 课程接口中有一个学习课程方法，有一个实现类重写了这个课程接口的方法</span></span><br><span class="line"><span class="comment">     * Geely有一个课程接口的属性，设置课程的方法，学习课程的方法（其中调用课程接口的学习课程的方法）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Geely geely = <span class="keyword">new</span> Geely();</span><br><span class="line">        <span class="comment">//给Geely设置哪个课程，他就会调用哪个课程的学习方法</span></span><br><span class="line">        geely.setiCourse(<span class="keyword">new</span> JavaCourse());</span><br><span class="line">        geely.studyImoocCourse();</span><br><span class="line"></span><br><span class="line">        geely.setiCourse(<span class="keyword">new</span> FECourse());</span><br><span class="line">        geely.studyImoocCourse();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上述代码中，ICourse接口是固定不变，Test应用层应该没有依赖底层的Geely，而是Geely和Test都依赖其接口ICourse。</p><p>以上例子来源于<a href="https://coding.imooc.com/learn/list/270.html" target="_blank" rel="noopener">java设计模式精讲 Debug 方式+内存分析</a>，以及<a href="https://pan.baidu.com/s/1gyYmZiiRgxr85mwHz8UCGA" target="_blank" rel="noopener">大话设计模式pdf</a>–&gt;密码:ugu3</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;加深依赖倒置原则定义的理解&quot;&gt;&lt;a href=&quot;#加深依赖倒置原则定义的理解&quot; class=&quot;headerlink&quot; title=&quot;加深依赖倒置原则定义的理解&quot;&gt;&lt;/a&gt;加深依赖倒置原则定义的理解&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;依赖倒置原则&lt;br&gt;A. 
+      
+    
+    </summary>
+    
+      <category term="大战设计模式" scheme="http://seina.top/categories/%E5%A4%A7%E6%88%98%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计原则" scheme="http://seina.top/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见设计原则-开闭原则</title>
+    <link href="http://seina.top/2018/11/03/openClose/"/>
+    <id>http://seina.top/2018/11/03/openClose/</id>
+    <published>2018-11-03T03:31:38.000Z</published>
+    <updated>2018-11-14T03:56:36.740Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h3><blockquote><p>包括：开闭原则，依赖倒置原则，单一职责原则，接口隔离原则，最少知道原则(迪米特法则)，里氏替换原则，合成复用原则(组合复用原则)。<br>在实际开发过程中讲究一个平衡和取舍，要在适当的场景遵循设计原则，不要过度设计。</p></blockquote><h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><p>定义：一个软件实体如类、模块和函数应该对扩展开放，对修改关闭，即可以扩展，不可以修改。用抽象构建框架，用实现扩展细节。<br>优点：提高软件系统的可复用性及可维护性<br>经典例子：一国两制，弹性8小时打卡</p><blockquote><p>核心思想：实现开闭原则的核心是面向抽象编程，而不是面向具体的实现编程</p></blockquote><p>我们在做任何系统的时候，都不要指定系统一开始的时候需求确定，就再也不会变化，这是不现实也不科学的想法，那么既然需求一定会变化，我们就应该重点关注怎么设计才能面对需求的改变却可以保持相对稳定。</p><p>越底层模块的变化影响的范围越大，越高层模块的变化影响的范围越小，简单理解，如果dao层被很多Service实现，如果改dao层，可能影响到其他模块的service，controller等。</p><p>如果接口里面有很多方法，实现类里面逻辑又很复杂，一旦改变了，风险很大，所以接口不应该经常变化，应该是稳定的，否则接口作为契约这个功能就失去了。既然抽象相对而言是稳定的，那么让类依赖于固定的抽象，就尽量不要修改原来稳定的代码，而通过面向对象的继承以及多态体的机制，就可以实现对抽象体的继承，通过重写改变其固有的方法，或者实现新的扩展方法，所以对扩展是开放对。</p><p>无论模块是多么封闭，都会存在一些无法对之封闭的变化。在我们最开始写代码的时候假设不会发生变化。当发生变化的时候，我们就立即采取行动，创建抽象来隔离以后发生的类似的变化。</p><blockquote><p>小总结：面对需求，我们对代码的改动是通过增加新代码进行的，而不是改动现有的代码。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;设计原则&quot;&gt;&lt;a href=&quot;#设计原则&quot; class=&quot;headerlink&quot; title=&quot;设计原则&quot;&gt;&lt;/a&gt;设计原则&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;包括：开闭原则，依赖倒置原则，单一职责原则，接口隔离原则，最少知道原则(迪米特法则)，里氏替换原则
+      
+    
+    </summary>
+    
+      <category term="大战设计模式" scheme="http://seina.top/categories/%E5%A4%A7%E6%88%98%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计原则" scheme="http://seina.top/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
     
   </entry>
   
