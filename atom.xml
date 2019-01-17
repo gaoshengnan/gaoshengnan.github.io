@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://seina.top/"/>
-  <updated>2019-01-15T13:03:01.596Z</updated>
+  <updated>2019-01-17T15:13:08.572Z</updated>
   <id>http://seina.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录一次Activiti在线Web流程设计器从h2数据库转成mysql线上故障排查</title>
+    <link href="http://seina.top/2019/01/17/activitiWebH2ToMysql/"/>
+    <id>http://seina.top/2019/01/17/activitiWebH2ToMysql/</id>
+    <published>2019-01-17T12:56:16.000Z</published>
+    <updated>2019-01-17T15:13:08.572Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="故障场景描述"><a href="#故障场景描述" class="headerlink" title="故障场景描述"></a>故障场景描述</h3><p>首先我要做的事情是用自己集成好的<a href="https://github.com/gaoshengnan/Activiti6.0.0-bpmn20-web" target="_blank" rel="noopener">Activiti在线web流程设计器</a>画工作流流程图，但是限于Activiti默认配置是h2数据库，在Tomcat重新重启之后，画好的流程配置文件数据就没了。于是准备换成mysql的数据库，便可以将流程配置文件持久落库。</p><p>实际上我集成好的流程设计器是将Activiti6.0.0的war包activiti-app和activiti-admin放在Tomcat的webapps下，然后启动tomcat，访问<a href="http://localhost:8080/activiti-app" target="_blank" rel="noopener">http://localhost:8080/activiti-app</a> 登录之后开始设计工作流流程图。</p><h4 id="对应操作"><a href="#对应操作" class="headerlink" title="对应操作"></a>对应操作</h4><p>修改activiti-app的数据库，配置文件对应路径如下：<br>Activiti6.0.0-bpmn20-web/apache-tomcat-8.0.53/webapps/activiti-app/WEB-INF/classes/META-INF/activiti-app/activiti-app.properties </p><blockquote><p>原来的h2数据库配置</p></blockquote><p><div align="left"><img src="/img/activitiWebH2ToMysql/3.png" height="300" width="600"></div></p><blockquote><p>改成mysql配置</p></blockquote><p><div align="left"><img src="/img/activitiWebH2ToMysql/1.png" height="300" width="600"></div></p><p>看似简单的操作，在我改好之后，重新启动Tomcat，访问<a href="http://localhost:8080/activiti-app" target="_blank" rel="noopener">http://localhost:8080/activiti-app</a> 发现报错404，明显activiti-app没有成功部署到服务器上。</p><h3 id="开始排查问题"><a href="#开始排查问题" class="headerlink" title="开始排查问题"></a>开始排查问题</h3><p>接下来查看服务器的logs/catalina.out日志，发现异常信息：</p><p><div align="left"><img src="/img/activitiWebH2ToMysql/2.png" height="140" width="850"></div></p><p>原来activiti-app在tomcat启动的时候，会创建一个表，其中表的字段如图中蓝色框框里的ID_VARCHAR（255）指定为PRIMARY_KEY(ID_)主键，导致mysql报错：Index column size too large. The maximum column size is 767 bytes，意思是索引字段太长，限制长度为767个字节。</p><p>然后一脸懵逼的把这个异常信息粘到百度，发现mysql5.6版本有重要的Innodb参数innodb_large_prefix全局动态变量，在5.6中默认是关闭的（5.7默认开启），该参数表示Innodb为字段创建索引时，限制的字节长度，关闭时，字节长度大于767则会报warnings，开启时则会报错，创建不成功.</p><h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>然后查看了一下数据库mysql的字符集编码：</p><blockquote><p>show variables like ‘character_set_database’;</p></blockquote><p><div align="left"><img src="/img/activitiWebH2ToMysql/4.png" height="170" width="500"></div></p><p>发现是utf8mb4，mysql从5.5.3之后增加了utfmb4的编码，专门用来兼容4字节的unicode，好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。而在utf8中，中文一般占3个字节。所以上面的ID_主键索引设置成255，如果是utfmb4，大约1020，超过了767个字节，所以换成是utf8，问题就解决了</p><blockquote><p>alter database activiti character set utf8;</p></blockquote><p><div align="left"><img src="/img/activitiWebH2ToMysql/5.png" height="170" width="500"></div></p><p>最后重新启动Tomcat服务，就可以访问activiti-app页面开始设计流程图了～～</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;故障场景描述&quot;&gt;&lt;a href=&quot;#故障场景描述&quot; class=&quot;headerlink&quot; title=&quot;故障场景描述&quot;&gt;&lt;/a&gt;故障场景描述&lt;/h3&gt;&lt;p&gt;首先我要做的事情是用自己集成好的&lt;a href=&quot;https://github.com/gaoshengna
+      
+    
+    </summary>
+    
+      <category term="Activiti工作流" scheme="http://seina.top/categories/Activiti%E5%B7%A5%E4%BD%9C%E6%B5%81/"/>
+    
+    
+      <category term="Activiti" scheme="http://seina.top/tags/Activiti/"/>
+    
+      <category term="Mysql" scheme="http://seina.top/tags/Mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>链表 - 判断一个链表是否有环以及求出环入口点</title>
@@ -52,7 +79,7 @@
     <link href="http://seina.top/2019/01/02/geekTime/"/>
     <id>http://seina.top/2019/01/02/geekTime/</id>
     <published>2019-01-02T11:58:35.000Z</published>
-    <updated>2019-01-02T13:30:50.592Z</updated>
+    <updated>2019-01-17T13:04:07.763Z</updated>
     
     <content type="html"><![CDATA[<font color="#7B68EE" size="4.5" face="黑体">扫描我分享的课程专栏海报二维码，在买专栏的时候就能获取立减券，金额不定～</font><h2 id="一、10x程序员工作法"><a href="#一、10x程序员工作法" class="headerlink" title="一、10x程序员工作法"></a>一、10x程序员工作法</h2><h5 id="优秀程序员的开发效率是普通程序员的10倍。"><a href="#优秀程序员的开发效率是普通程序员的10倍。" class="headerlink" title="优秀程序员的开发效率是普通程序员的10倍。"></a>优秀程序员的开发效率是普通程序员的10倍。</h5><blockquote><p><div align="center"><img src="/img/geekTime/10xProgrammer.png" height="550" width="380"></div></p></blockquote><h2 id="二、技术管理实战36讲"><a href="#二、技术管理实战36讲" class="headerlink" title="二、技术管理实战36讲"></a>二、技术管理实战36讲</h2><h5 id="当你学会用“带团队”的思路工作和生活之后，无论你是否拥有”管理者”的头衔，你都将成为身边人事实上的领袖。"><a href="#当你学会用“带团队”的思路工作和生活之后，无论你是否拥有”管理者”的头衔，你都将成为身边人事实上的领袖。" class="headerlink" title="当你学会用“带团队”的思路工作和生活之后，无论你是否拥有”管理者”的头衔，你都将成为身边人事实上的领袖。"></a>当你学会用“带团队”的思路工作和生活之后，无论你是否拥有”管理者”的头衔，你都将成为身边人事实上的领袖。</h5><blockquote><p><div align="center"><img src="/img/geekTime/technicalManagement.png" height="550" width="380"></div></p></blockquote><h2 id="三、从0开始学微服务"><a href="#三、从0开始学微服务" class="headerlink" title="三、从0开始学微服务"></a>三、从0开始学微服务</h2><h5 id="微服务是当下最火热的后端架构之一。不管你是一个什么级别的程序员，服务化都是你迟早会遇到的难题。"><a href="#微服务是当下最火热的后端架构之一。不管你是一个什么级别的程序员，服务化都是你迟早会遇到的难题。" class="headerlink" title="微服务是当下最火热的后端架构之一。不管你是一个什么级别的程序员，服务化都是你迟早会遇到的难题。"></a>微服务是当下最火热的后端架构之一。不管你是一个什么级别的程序员，服务化都是你迟早会遇到的难题。</h5><blockquote><p><div align="center"><img src="/img/geekTime/microService.png" height="550" width="380"></div></p></blockquote><h2 id="四、趣谈网络协议"><a href="#四、趣谈网络协议" class="headerlink" title="四、趣谈网络协议"></a>四、趣谈网络协议</h2><h5 id="网络协议是每个程序员的必修课，但是彻底掌握并应用网络协议知识却并非易事，比如常见的HTTP、TCP-IP。"><a href="#网络协议是每个程序员的必修课，但是彻底掌握并应用网络协议知识却并非易事，比如常见的HTTP、TCP-IP。" class="headerlink" title="网络协议是每个程序员的必修课，但是彻底掌握并应用网络协议知识却并非易事，比如常见的HTTP、TCP/IP。"></a>网络协议是每个程序员的必修课，但是彻底掌握并应用网络协议知识却并非易事，比如常见的HTTP、TCP/IP。</h5><blockquote><p><div align="center"><img src="/img/geekTime/networkProtocl.png" height="550" width="380"></div></p></blockquote><h2 id="五、Java核心技术36讲"><a href="#五、Java核心技术36讲" class="headerlink" title="五、Java核心技术36讲"></a>五、Java核心技术36讲</h2><h5 id="将基础很重要，现如今不需要那些”差不多”或者”还行”的代码，而是需要达到一定水准的高质量设计与实现。"><a href="#将基础很重要，现如今不需要那些”差不多”或者”还行”的代码，而是需要达到一定水准的高质量设计与实现。" class="headerlink" title="将基础很重要，现如今不需要那些”差不多”或者”还行”的代码，而是需要达到一定水准的高质量设计与实现。"></a>将基础很重要，现如今不需要那些”差不多”或者”还行”的代码，而是需要达到一定水准的高质量设计与实现。</h5><blockquote><p><div align="center"><img src="/img/geekTime/java.png" height="550" width="380"></div></p></blockquote><h2 id="六、深入拆解Java虚拟机"><a href="#六、深入拆解Java虚拟机" class="headerlink" title="六、深入拆解Java虚拟机"></a>六、深入拆解Java虚拟机</h2><h5 id="Oracle高级研究员来解答你对Java的种种疑虑，达到知其然也要知其所以然。"><a href="#Oracle高级研究员来解答你对Java的种种疑虑，达到知其然也要知其所以然。" class="headerlink" title="Oracle高级研究员来解答你对Java的种种疑虑，达到知其然也要知其所以然。"></a>Oracle高级研究员来解答你对Java的种种疑虑，达到知其然也要知其所以然。</h5><blockquote><p><div align="center"><img src="/img/geekTime/jvm.png" height="550" width="380"></div></p></blockquote><h2 id="七、数据结构和算法之美"><a href="#七、数据结构和算法之美" class="headerlink" title="七、数据结构和算法之美"></a>七、数据结构和算法之美</h2><h5 id="一个让你能真正受用的数据结构和算法课程，希望给你指明一个简洁、高效的学习路径，并教你一个学习基础知识的通用方法。"><a href="#一个让你能真正受用的数据结构和算法课程，希望给你指明一个简洁、高效的学习路径，并教你一个学习基础知识的通用方法。" class="headerlink" title="一个让你能真正受用的数据结构和算法课程，希望给你指明一个简洁、高效的学习路径，并教你一个学习基础知识的通用方法。"></a>一个让你能真正受用的数据结构和算法课程，希望给你指明一个简洁、高效的学习路径，并教你一个学习基础知识的通用方法。</h5><blockquote><p><div align="center"><img src="/img/geekTime/dataStructureAndAlgorithms.png" height="550" width="380"></div></p></blockquote><h2 id="八、算法面试通关40讲"><a href="#八、算法面试通关40讲" class="headerlink" title="八、算法面试通关40讲"></a>八、算法面试通关40讲</h2><h5 id="前Facebook工程师带你刷算法题，覃超老师的课程真的超级超级棒，老师很帅，满满的干货带你挑战算法。"><a href="#前Facebook工程师带你刷算法题，覃超老师的课程真的超级超级棒，老师很帅，满满的干货带你挑战算法。" class="headerlink" title="前Facebook工程师带你刷算法题，覃超老师的课程真的超级超级棒，老师很帅，满满的干货带你挑战算法。"></a>前Facebook工程师带你刷算法题，覃超老师的课程真的超级超级棒，老师很帅，满满的干货带你挑战算法。</h5><blockquote><p><div align="center"><img src="/img/geekTime/algorithmsInterview.png" height="550" width="380"></div></p></blockquote><blockquote><p>最后，加入极客时间专栏学习已经有一段时间，从早上洗漱，化妆到上班地铁上，以及从手机里面的网易云音乐切换到到极客时间专栏课程，利用琐碎时间充实自己，感觉收获颇多。</p></blockquote>]]></content>
     
@@ -70,17 +97,17 @@
       <category term="极客时间学习" scheme="http://seina.top/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Java -" scheme="http://seina.top/tags/Java/"/>
+      <category term="数据结构和算法" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
     
-      <category term="-极客时间 -" scheme="http://seina.top/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"/>
+      <category term="Java" scheme="http://seina.top/tags/Java/"/>
     
-      <category term="-数据结构和算法 -" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+      <category term="极客时间" scheme="http://seina.top/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"/>
     
-      <category term="-网络协议 -" scheme="http://seina.top/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+      <category term="网络协议" scheme="http://seina.top/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
-      <category term="-Jvm -" scheme="http://seina.top/tags/Jvm/"/>
+      <category term="Jvm" scheme="http://seina.top/tags/Jvm/"/>
     
-      <category term="-微服务架构" scheme="http://seina.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/"/>
+      <category term="微服务架构" scheme="http://seina.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
