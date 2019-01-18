@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://seina.top/"/>
-  <updated>2019-01-17T15:23:16.189Z</updated>
+  <updated>2019-01-18T07:13:12.651Z</updated>
   <id>http://seina.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Activiti6.0.0工作流引擎的web程序设计器</title>
+    <link href="http://seina.top/2019/01/18/activitiWebBpmn/"/>
+    <id>http://seina.top/2019/01/18/activitiWebBpmn/</id>
+    <published>2019-01-18T03:36:01.000Z</published>
+    <updated>2019-01-18T07:13:12.651Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、流程设计器环境搭建步骤"><a href="#一、流程设计器环境搭建步骤" class="headerlink" title="一、流程设计器环境搭建步骤"></a>一、流程设计器环境搭建步骤</h3><ol><li>首先在<a href="https://www.activiti.org/" target="_blank" rel="noopener">Activiti</a>官网下载activiti6.0.0</li><li>然后下载<a href="http://mirror.bit.edu.cn/apache/tomcat/" target="_blank" rel="noopener">Tomcat8.0.53</a></li><li>最后把activiti-6.0.0/wars/activiti-admin.war 和 activiti-6.0.0/wars/activiti-app.war放到tomcat的webapp目录下</li></ol><h3 id="二、Activiti6-0-0-bpmn20-web"><a href="#二、Activiti6-0-0-bpmn20-web" class="headerlink" title="二、Activiti6.0.0-bpmn20-web"></a>二、Activiti6.0.0-bpmn20-web</h3><p>Activiti6.0.0-bpmn20-web是我搭建好的Web流程设计器环境，可以直接clone项目到本地启动，就可以在线设计工作流引擎流程图</p><blockquote><p>git clone <a href="https://github.com/gaoshengnan/Activiti6.0.0-bpmn20-web.git" target="_blank" rel="noopener">https://github.com/gaoshengnan/Activiti6.0.0-bpmn20-web.git</a></p></blockquote><p>拉下代码之后打开Terminal，启动Tomcat</p><p><div align="left"><img src="/img/activitiWebBpmn/startTomcat.png" height="180" width="500"></div></p><blockquote><p>访问<a href="http://localhost:8080/activiti-admin" target="_blank" rel="noopener">http://localhost:8080/activiti-admin</a>，用户名 username：admin   |  密码 password：admin</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/loginAdmin.png" height="300" width="600"></div></p><blockquote><p>这里默认的Server port是9999，修改端口号为8080，设置app的密码为test</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/updatePortPass.png" height="350" width="530"></div></p><blockquote><p>并点击【Check Activiti Rest endpoint】测试一下</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/check.png" height="240" width="600"></div></p><blockquote><p>然后访问<a href="http://localhost:8080/activiti-app" target="_blank" rel="noopener">http://localhost:8080/activiti-app</a>，用户名 username：admin | 密码 password：test</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/loginApp.png" height="370" width="750"></div></p><blockquote><p>现在可以开始设计流程图了～～～</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/appMain.png" height="230" width="800"></div></p><p><div align="left"><img src="/img/activitiWebBpmn/bpmn.png" height="460" width="950"></div></p><h3 id="默认h2数据库改成mysql数据库"><a href="#默认h2数据库改成mysql数据库" class="headerlink" title="默认h2数据库改成mysql数据库"></a>默认h2数据库改成mysql数据库</h3><p>activiti默认配置h2的数据库，当重新启动Tomcat，设计好的流程图就被清空，可以配置成自己的mysql数据库，修改这个路径下的配置：</p><blockquote><p>apache-tomcat-8.0.53/webapps/activiti-app/WEB-INF/classes/META-INF/activiti-app/activiti-app.properties</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/data.png" height="300" width="550"></div></p><blockquote><p>注意：切换时如果出现问题可以查看这片故障排查记录<a href="http://seina.top/2019/01/17/activitiWebH2ToMysql/">记录ActivitiWeb流程设计器从h2转成mysql线上故障排查</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;一、流程设计器环境搭建步骤&quot;&gt;&lt;a href=&quot;#一、流程设计器环境搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;一、流程设计器环境搭建步骤&quot;&gt;&lt;/a&gt;一、流程设计器环境搭建步骤&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;首先在&lt;a href=&quot;https://
+      
+    
+    </summary>
+    
+      <category term="Activiti工作流" scheme="http://seina.top/categories/Activiti%E5%B7%A5%E4%BD%9C%E6%B5%81/"/>
+    
+    
+      <category term="Activiti" scheme="http://seina.top/tags/Activiti/"/>
+    
+  </entry>
   
   <entry>
     <title>记录ActivitiWeb流程设计器从h2转成mysql线上故障排查</title>
