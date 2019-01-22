@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://seina.top/"/>
-  <updated>2019-01-18T07:13:12.651Z</updated>
+  <updated>2019-01-22T02:54:28.552Z</updated>
   <id>http://seina.top/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>K个一组翻转链表</title>
+    <link href="http://seina.top/2019/01/21/reverseNodesInKGroup/"/>
+    <id>http://seina.top/2019/01/21/reverseNodesInKGroup/</id>
+    <published>2019-01-21T15:29:52.000Z</published>
+    <updated>2019-01-22T02:54:28.552Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><ul><li>英文版：<a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">https://leetcode.com/problems/reverse-nodes-in-k-group/</a></li><li>中文版：<a href="https://leetcode-cn.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-nodes-in-k-group/</a></li></ul></blockquote><h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3><p>首先，我们以7个结点的链表为例，假设K等于3，那么反转前后链表如下图所示：</p><div align="center"><img src="/img/reverseNodeInKGroup/1.png" height="150" width="700"></div><h3 id="第一轮K个结点反转"><a href="#第一轮K个结点反转" class="headerlink" title="第一轮K个结点反转"></a>第一轮K个结点反转</h3><blockquote><p>注：以下所有思路，请参考上面<a href="https://github.com/gaoshengnan/LeetCode/tree/master/src/main/java/linkedlist/reverseNodesInkGroup" target="_blank" rel="noopener">ReverseNodesInkGroup.java</a>里给出的推荐答案进行阅读。<br>还有head = pre == null ? cur : head，为了不扰乱整理逻辑，这句话暂时先不管，是用来标识时刻变化的链表的第一个结点，以便最后返回。</p></blockquote><p>首先看到推荐答案中代码有点多，没关系，可以先什么都不管，第一轮K个结点反转只要从cur=head入手，然后进入while循环，然后看下图观察cur随count的变化：</p><div align="center"><img src="/img/reverseNodeInKGroup/2.png" height="180" width="700"></div><p>可以看出count从1到3，cur从结点1走到结点3，然后进入if条件语句。开始给start赋值，首先pre是null，所以start表示从head开始，随后给left，start，end，right赋值，赋值之后如下图所示：</p><div align="center"><img src="/img/reverseNodeInKGroup/3.png" height="180" width="700"></div><p>进入resign方法，分别用p，c，n指针来反转K个结点，此处和<a href="https://github.com/gaoshengnan/LeetCode/tree/master/src/main/java/linkedlist/reverseList" target="_blank" rel="noopener">反转单链表</a>思路类似，K个结点反转过程如下图：</p><div align="center"><img src="/img/reverseNodeInKGroup/4.png" height="250" width="700"></div><p>由图可以看出当n等于right的时候停止反转，并将结点1（反转后的尾结点）和结点4（下一组K个结点的首结点）连上。随后将pre指向第一个K组结点反转后的尾结点（也就是下一组K结点的前一个结点），并将cur指向下一组K结点的首结点，以上一轮大的while循环结束。如下图可见指针情况：</p><div align="center"><img src="/img/reverseNodeInKGroup/5.png" height="200" width="700"></div><h3 id="第二轮K个结点反转"><a href="#第二轮K个结点反转" class="headerlink" title="第二轮K个结点反转"></a>第二轮K个结点反转</h3><p>进入第二轮K个结点反转，cur随着count++从结点4移动到结点6，如下图所示：</p><div align="center"><img src="/img/reverseNodeInKGroup/6.png" height="170" width="700"></div><p>然后继续调用resign方法，给left，start，end，right赋值，如下图所示：</p><div align="center"><img src="/img/reverseNodeInKGroup/7.png" height="170" width="700"></div><p>进入resign方法，开始反转第二组K个结点，需要注意的是，此时left不为null，要将上一组K个结点和这一组K个结点连上，如下图：</p><div align="center"><img src="/img/reverseNodeInKGroup/8.png" height="250" width="700"></div><p>最后调整指针如下图：</p><div align="center"><img src="/img/reverseNodeInKGroup/9.png" height="130" width="700"></div><p>然后当count=2时，不满足条件，退出循环，返回head。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;英文版：&lt;a href=&quot;https://leetcode.com/problems/reverse-nodes-in-k-group/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://leetcode.
+      
+    
+    </summary>
+    
+      <category term="数据结构和算法" scheme="http://seina.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="链表" scheme="http://seina.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="数据结构和算法" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://seina.top/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Activiti6.0.0工作流引擎的web程序设计器</title>
     <link href="http://seina.top/2019/01/18/activitiWebBpmn/"/>
     <id>http://seina.top/2019/01/18/activitiWebBpmn/</id>
     <published>2019-01-18T03:36:01.000Z</published>
-    <updated>2019-01-18T07:13:12.651Z</updated>
+    <updated>2019-01-18T07:38:09.507Z</updated>
     
     <content type="html"><![CDATA[<h3 id="一、流程设计器环境搭建步骤"><a href="#一、流程设计器环境搭建步骤" class="headerlink" title="一、流程设计器环境搭建步骤"></a>一、流程设计器环境搭建步骤</h3><ol><li>首先在<a href="https://www.activiti.org/" target="_blank" rel="noopener">Activiti</a>官网下载activiti6.0.0</li><li>然后下载<a href="http://mirror.bit.edu.cn/apache/tomcat/" target="_blank" rel="noopener">Tomcat8.0.53</a></li><li>最后把activiti-6.0.0/wars/activiti-admin.war 和 activiti-6.0.0/wars/activiti-app.war放到tomcat的webapp目录下</li></ol><h3 id="二、Activiti6-0-0-bpmn20-web"><a href="#二、Activiti6-0-0-bpmn20-web" class="headerlink" title="二、Activiti6.0.0-bpmn20-web"></a>二、Activiti6.0.0-bpmn20-web</h3><p>Activiti6.0.0-bpmn20-web是我搭建好的Web流程设计器环境，可以直接clone项目到本地启动，就可以在线设计工作流引擎流程图</p><blockquote><p>git clone <a href="https://github.com/gaoshengnan/Activiti6.0.0-bpmn20-web.git" target="_blank" rel="noopener">https://github.com/gaoshengnan/Activiti6.0.0-bpmn20-web.git</a></p></blockquote><p>拉下代码之后打开Terminal，启动Tomcat</p><p><div align="left"><img src="/img/activitiWebBpmn/startTomcat.png" height="180" width="500"></div></p><blockquote><p>访问<a href="http://localhost:8080/activiti-admin" target="_blank" rel="noopener">http://localhost:8080/activiti-admin</a>，用户名 username：admin   |  密码 password：admin</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/loginAdmin.png" height="300" width="600"></div></p><blockquote><p>这里默认的Server port是9999，修改端口号为8080，设置app的密码为test</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/updatePortPass.png" height="350" width="530"></div></p><blockquote><p>并点击【Check Activiti Rest endpoint】测试一下</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/check.png" height="240" width="600"></div></p><blockquote><p>然后访问<a href="http://localhost:8080/activiti-app" target="_blank" rel="noopener">http://localhost:8080/activiti-app</a>，用户名 username：admin | 密码 password：test</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/loginApp.png" height="370" width="750"></div></p><blockquote><p>现在可以开始设计流程图了～～～</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/appMain.png" height="230" width="800"></div></p><p><div align="left"><img src="/img/activitiWebBpmn/bpmn.png" height="460" width="950"></div></p><h3 id="默认h2数据库改成mysql数据库"><a href="#默认h2数据库改成mysql数据库" class="headerlink" title="默认h2数据库改成mysql数据库"></a>默认h2数据库改成mysql数据库</h3><p>activiti默认配置h2的数据库，当重新启动Tomcat，设计好的流程图就被清空，可以配置成自己的mysql数据库，修改这个路径下的配置：</p><blockquote><p>apache-tomcat-8.0.53/webapps/activiti-app/WEB-INF/classes/META-INF/activiti-app/activiti-app.properties</p></blockquote><p><div align="left"><img src="/img/activitiWebBpmn/data.png" height="300" width="550"></div></p><blockquote><p>注意：切换时如果出现问题可以查看这片故障排查记录<a href="http://seina.top/2019/01/17/activitiWebH2ToMysql/">记录ActivitiWeb流程设计器从h2转成mysql线上故障排查</a></p></blockquote>]]></content>
     
@@ -92,9 +123,9 @@
       <category term="数据结构和算法" scheme="http://seina.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="数据结构和算法" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
-    
       <category term="链表" scheme="http://seina.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="数据结构和算法" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
     
       <category term="LeetCode" scheme="http://seina.top/tags/LeetCode/"/>
     
@@ -123,11 +154,11 @@
       <category term="极客时间学习" scheme="http://seina.top/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0/"/>
     
     
+      <category term="数据结构和算法" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
       <category term="Java" scheme="http://seina.top/tags/Java/"/>
     
       <category term="极客时间" scheme="http://seina.top/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"/>
-    
-      <category term="数据结构和算法" scheme="http://seina.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
     
       <category term="网络协议" scheme="http://seina.top/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
