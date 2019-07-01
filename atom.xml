@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://seina.top/"/>
-  <updated>2019-01-22T02:54:28.552Z</updated>
+  <updated>2019-07-01T09:56:39.988Z</updated>
   <id>http://seina.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Exception 和 Error 有什么区别？</title>
+    <link href="http://seina.top/2019/07/01/ExceptionAndError/"/>
+    <id>http://seina.top/2019/07/01/ExceptionAndError/</id>
+    <published>2019-06-30T23:01:28.000Z</published>
+    <updated>2019-07-01T09:56:39.988Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="问题一：对比-Exception-和-Error-？"><a href="#问题一：对比-Exception-和-Error-？" class="headerlink" title="问题一：对比 Exception 和 Error ？"></a>问题一：对比 Exception 和 Error ？</h4><p>Exception 和 Error 都是继承了 Throwable 类。</p><p>Exception 是程序正常运行中，可以预料的意外情况，可能并且应该被捕获，进行相应处理。</p><p>Error 是指在正常情况下，不大可能出现的情况，绝大部分的 Error 都会导致程序（比如 JVM 自身）处于非正常的、不可恢复状态，是程序本身无法修复的错误，常见的比如 OutOfMemoryError 之类，都是 Error 的子类。</p><h4 id="问题二：运行时异常和一般异常有什么区别-？"><a href="#问题二：运行时异常和一般异常有什么区别-？" class="headerlink" title="问题二：运行时异常和一般异常有什么区别 ？"></a>问题二：运行时异常和一般异常有什么区别 ？</h4><p>Exception 又分为可检查异常（checked）和不检查异常（unchecked）。</p><p>可检查异常在源代码里必须显式地进行捕获处理，这是编译期检查的一部分。</p><p>不可检查异常就是所谓的运行时异常，类似 NullPointerException、ArrayIndexOutOfBoundsException 之类，通常是可以编码避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译期强制要求。</p><h4 id="问题三：你了解那些-Error、Exception-或者-RuntimeException-？"><a href="#问题三：你了解那些-Error、Exception-或者-RuntimeException-？" class="headerlink" title="问题三：你了解那些 Error、Exception 或者 RuntimeException ？"></a>问题三：你了解那些 Error、Exception 或者 RuntimeException ？</h4><p>Error：</p><p>VirtualMachineError、OutOfMemoryError、StackOverflowError</p><p>Exception：</p><p>IOException 等检查异常</p><p>RuntimeException 运行时异常：NullPointerException、ArrayIndexOutOfBoundsException</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;问题一：对比-Exception-和-Error-？&quot;&gt;&lt;a href=&quot;#问题一：对比-Exception-和-Error-？&quot; class=&quot;headerlink&quot; title=&quot;问题一：对比 Exception 和 Error ？&quot;&gt;&lt;/a&gt;问题一：对比 E
+      
+    
+    </summary>
+    
+      <category term="Java 核心基础" scheme="http://seina.top/categories/Java-%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://seina.top/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>K个一组翻转链表</title>
