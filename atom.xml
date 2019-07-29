@@ -404,6 +404,31 @@
   </entry>
   
   <entry>
+    <title>对比 HashMap、Hashtable、TreeMap 有什么不同？</title>
+    <link href="http://seina.top/2018/07/29/java-hashmap/"/>
+    <id>http://seina.top/2018/07/29/java-hashmap/</id>
+    <published>2018-07-29T14:55:40.000Z</published>
+    <updated>2019-07-29T14:58:38.143Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Map-接口"><a href="#Map-接口" class="headerlink" title="Map 接口"></a>Map 接口</h4><p>Java 为数据结构中的映射定义了一个接口 java.util.Map，此接口主要有四个常用的实现类，分别是 HashMap、Hashtable、LinkedHashMap 和 TreeMap</p><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>下面针对各个实现类的特点做一些说明：</p><p>(1) HashMap：</p><ul><li>它根据键的 hashCode 值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。</li><li>HashMap 最多只允许一条记录的键为 null，允许多条记录的值为 null。</li><li>HashMap 非线程安全，即任一时刻可以有多个线程同时写 HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用  Collections 的 synchronizedMap 方法使 HashMap 具有线程安全的能力，或者使用 ConcurrentHashMap。</li></ul><p>(2) Hashtable：</p><ul><li>它承自 Dictionary 类，并且是线程安全的，任一时间只有一个线程能写 Hashtable，并发性不如 ConcurrentHashMap，因为 ConcurrentHashMap 引入了分段锁。</li><li>Hashtable 不建议在新代码中使用，不需要线程安全的场合可以用 HashMap 替换，需要线程安全的场合可以用ConcurrentHashMap 替换。</li></ul><p>(3) TreeMap：</p><ul><li>TreeMap 实现 SortedMap 接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用 Iterator 遍历 TreeMap 时，得到的记录是排过序的。</li><li>在使用 TreeMap 时，key 必须实现 Comparable 接口或者在构造 TreeMap 传入自定义的 Comparator，否则会在运行时抛出 java.lang.ClassCastException 类型的异常。</li></ul><h4 id="工业级散列表举例分析-HashMap"><a href="#工业级散列表举例分析-HashMap" class="headerlink" title="工业级散列表举例分析 - HashMap"></a>工业级散列表举例分析 - HashMap</h4><ul><li>初始大小是16（capacity），默认值可以设置的，如果实现知道大概的数据量有多大，可以通过修改默认初始大小，减少动态扩容的次数，大大提高HashMap的性能</li><li>最大装载因子是0.75，当HashMap的元素个数超过0.75-capacity的时候就会启动动态扩容，每次扩容为原来两倍。</li><li>HashMap底层使用链表法来解决冲突，即使负载因子和散列函数设计的再合理，页免不了出现拉链过长的情况，一旦出现拉链过长，就会严重影响HashMap的性能。于是在JDK1.8版本中，对HashMap做进一步优化，引入了红黑树，当链表长度（默认是8）过长时，链表就会转换成红黑树，我么就可以利用红黑树快速增删改查的特点。当红黑树节电少于8时，又会将红黑树转化为链表，因为红黑树需要维护平衡，比起链表来，性能上的优势并不明显。</li><li>散列函数设计的并不复杂，追求的是简单高效，均匀分布</li></ul><h4 id="如何设计一个工业级别的散列表？"><a href="#如何设计一个工业级别的散列表？" class="headerlink" title="如何设计一个工业级别的散列表？"></a>如何设计一个工业级别的散列表？</h4><ul><li>支持快速的查询、删除、插入操作</li><li>内存占用合理，不能浪费过多的内存空间</li><li>性能稳定，极端情况下，散列表的性能也不会退化到无法接受的情况。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;Map-接口&quot;&gt;&lt;a href=&quot;#Map-接口&quot; class=&quot;headerlink&quot; title=&quot;Map 接口&quot;&gt;&lt;/a&gt;Map 接口&lt;/h4&gt;&lt;p&gt;Java 为数据结构中的映射定义了一个接口 java.util.Map，此接口主要有四个常用的实现类，分别是
+      
+    
+    </summary>
+    
+      <category term="Java 核心基础" scheme="http://seina.top/categories/Java-%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://seina.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>String、StringBuffer、StringBuilder 有什么区别？</title>
     <link href="http://seina.top/2018/07/27/java-string/"/>
     <id>http://seina.top/2018/07/27/java-string/</id>
