@@ -404,6 +404,33 @@
   </entry>
   
   <entry>
+    <title>ArrayList 和 Linkedlist 有什么区别？</title>
+    <link href="http://seina.top/2018/07/30/java-list/"/>
+    <id>http://seina.top/2018/07/30/java-list/</id>
+    <published>2018-07-30T15:53:00.000Z</published>
+    <updated>2019-07-30T03:01:51.023Z</updated>
+    
+    <content type="html"><![CDATA[<p>分别说 list、set、map</p><p>Collection、List、Set、Map 都是接口，不能实例化。继承自它们的 ArrayList, Vector, HashTable, HashMap 是具象 class，这些才可被实例化。</p><p>Collection 是最基本的集合接口，声明了适用于 JAVA 集合 Set 和 List 的通用方法。 Set 和 List 都继承了 Conllection，Map。</p><h4 id="set-无序不可重复"><a href="#set-无序不可重复" class="headerlink" title="set - 无序不可重复"></a>set - 无序不可重复</h4><p>1、Set 是最简单的一种集合。集合中的对象不按特定的方式排序，并且没有重复对象。 Set 接口主要实现了两个实现类：</p><ul><li>HashSet： HashSet 类按照哈希算法来存取集合中的对象，存取速度比较快，存入 HashSet 的对象必须定义 hashCode()。 </li><li>TreeSet ：TreeSet 类实现了 SortedSet 接口，底层为树结构。使用它可以从 Set 中提取有序的序列。</li><li>LinkedHashSet：具有 HashSet 的查询速度，且内部使用链表维护元素的顺序（插入的次序），于是在使用迭代器遍历 Set 时，结果会按元素插入的次序显示。</li></ul><p>Set : 存入 Set 的每个元素都必须是唯一的，因为 Set 不保存重复元素。加入 Set 的元素必须定义 equals() 方法以确保对象的唯一性。Set 与 Collection 有完全一样的接口。</p><h4 id="List-有序可重复"><a href="#List-有序可重复" class="headerlink" title="List - 有序可重复"></a>List - 有序可重复</h4><p>List 接口主要实现类包括：</p><ul><li>ArrayList()：（线程不安全） 代表长度可以改变得数组，由数组实现的 List，可以对元素进行随机的访问，向 ArrayList() 中插入与删除元素的速度慢。 </li><li>LinkedList()：（线程不安全）在实现中采用链表数据结构。插入和删除速度快，访问速度慢。 还具有下列方法：addFirst()，addLast()，getFirst(), getLast()，removeFirst() 和 removeLast()，这些方法 (没有在任何接口或基类中定义过)使得 LinkedList 可以当作堆栈、队列和双向队列使用。</li></ul><p>对于 List 的随机访问来说，就是只随机来检索位于特定位置的元素。 List 的 get(int index) 方法放回集合中由参数 index 指定的索引位置的对象，下标从“0” 开始</p><p>实际上有两种 List：一种是基本的 ArrayList，其优点在于随机访问元素，另一种是更强大的 LinkedList，它并不是为快速随机访问设计的，而是具有一套更通用的方法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;分别说 list、set、map&lt;/p&gt;
+&lt;p&gt;Collection、List、Set、Map 都是接口，不能实例化。继承自它们的 ArrayList, Vector, HashTable, HashMap 是具象 class，这些才可被实例化。&lt;/p&gt;
+&lt;p&gt;Collec
+      
+    
+    </summary>
+    
+      <category term="Java 核心基础" scheme="http://seina.top/categories/Java-%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://seina.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>对比 HashMap、Hashtable、TreeMap 有什么不同？</title>
     <link href="http://seina.top/2018/07/29/java-hashmap/"/>
     <id>http://seina.top/2018/07/29/java-hashmap/</id>
